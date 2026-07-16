@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #0A0F1C;
+  --color-panel: #101A2E;
+  --color-panel-light: #172440;
+  --color-gold: #C6A15B;
+  --color-gold-bright: #E8C97A;
+  --color-ivory: #F3EFE7;
+  --color-slate: #8D95A8;
+  --color-line: #24314F;
+
+  --font-display: var(--font-fraunces), serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-data: var(--font-plex-mono), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display text-ivory;
+  }
+  ::selection {
+    @apply bg-gold text-ink;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-blueprint-grid {
+    background-image:
+      linear-gradient(to right, rgba(198, 161, 91, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(198, 161, 91, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
 }
